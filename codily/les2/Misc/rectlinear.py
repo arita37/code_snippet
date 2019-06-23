@@ -32,8 +32,6 @@ The function should return -1 if the area of the sum exceeds 2,147,483,647.
 
 
 
-
-
 # you can use print for debugging purposes, e.g.
 # print "this is a debug message"
 

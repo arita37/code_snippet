@@ -117,8 +117,6 @@ Binary Search on potential Min values
 
 
 ### Binary search  : min,max values and linear costraints
-### Condition on mathatmical part
- 
 def sol(K, M, A) :
     N = len(A)
 
@@ -135,7 +133,7 @@ def sol(K, M, A) :
       mid  = int( (min0 + max0 ) /2 )
        
       if check_linear(A, mid, K) :
-            max0 = mid - 1  # Decrease Max reaching values
+            max0 = mid - 1  # Decrease Max reaching values, min search
             res = mid
       else :
             ### Impossible to have mid sum.
@@ -148,9 +146,7 @@ def check_linear(A, target_val, Kmax) :
     """"
        Calculate sequential sum of sub-bloack an
        Check if mid is reaches by sub-block of A : 
-             return True of Block_Sum <= mid
-             else False
-    
+             return True of Block_Sum <= mid else False
     """
     block_sum = 0
     block_k  = 1
@@ -160,9 +156,9 @@ def check_linear(A, target_val, Kmax) :
         # Reset Block into new one
         if block_sum >  target_val :
            block_sum = x
-           block_k =  block_k + 1
+           block_k   = block_k + 1
 
-        if block_k > Kmax :
+        if block_k > Kmax :  # Total block are used
             break
     
     if block_k <= Kmax:   # nb of block is below than K      
@@ -231,33 +227,33 @@ solution(K, M, A)
 O(N*log(N+M))
 expand allExample tests
 ▶ example 
-example test ✔OK
+
 expand allCorrectness tests
 ▶ extreme_single 
-single elements ✔OK
+
 ▶ extreme_double 
-single and double elements ✔OK
+
 ▶ extreme_min_max 
-maximal / minimal values ✔OK
+
 ▶ simple1 
-simple tests ✔OK
+
 ▶ simple2 
-simple tests ✔OK
+
 ▶ tiny_random_ones 
-random values {0, 1}, N = 100 ✔OK
+
 expand allPerformance tests
 ▶ small_random_ones 
-random values {0, 1}, N = 100 ✔OK
+
 ▶ medium_zeros 
-many zeros and 99 in the middle, length = 15,000 ✔OK
+
 ▶ medium_random 
-random values {1, 100}, N = 20,000 ✔OK
+
 ▶ large_random 
-random values {0, ..., MAX_INT}, N = 100,000 ✔OK
+
 ▶ large_random_ones 
-random values {0, 1}, N = 100,000 ✔OK
+
 ▶ all_the_same 
-all the same values, N = 100,000 ✔OK
+
 
 
 

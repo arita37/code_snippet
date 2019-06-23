@@ -1,3 +1,114 @@
+A company has employed N developers (numbered from 0 to N−1) and 
+
+
+
+wants to divide them into two teams. The first is a front-end team with F developers. 
+
+The second is a back-end team with N−F developers.
+
+ If the K-th developer is assigned to the front-end team then their contribution is A[K],
+
+
+ and if they are assigned to the back-end team then their contribution is B[K]. What is the maximum sum of contributions the company can achieve?
+
+Write a function:
+
+def solution(A, B, F)
+  that, given two arrays A, B (consisting of N integers each) and the integer F, 
+  returns the maximum sum of contributions the company can achieve.
+
+Examples:
+
+1. Given A = [4, 2, 1], B = [2, 5, 3] and F = 2, the function should return 10.
+ There should be two front-end developers and one back-end developer. 
+ The 0th and 2nd developers should be assigned to the front-end team (with contributions 4 and 1) 
+ and the 1st developer should be assigned to the back-end team (with contribution 5).
+
+2. Given A = [7, 1, 4, 4], B = [5, 3, 4, 3] and F = 2, the function should return 18. The 0th and 3rd developers should be assigned to the front-end team and the 1st and 2nd developers should be assigned to the back-end team.
+
+3. Given A = [5, 5, 5], B = [5, 5, 5] and F = 1, the function should return 15. The 0th developer can be assigned to the front-end team and the 1st and 2nd developers can be assigned to the back-end team.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [1..200,000];
+arrays A and B have equal lengths;
+each element of array A is an integer within the range [0..1,000];
+F is an integer within the range [0..N].
+Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauth
+
+
+A[K] : front end
+B[K] :back end
+
+
+F * nb of front end:
+  Max    A[ sublist ]  + B[  all - sublist ] 
+      
+  all sublist possible.
+  
+  
+  All permutation of N(,2)
+  
+  
+  
+import itertools
+list(itertools.permutations([1, 2, 3]))
+
+
+
+
+# Function which returns subset or r length from n 
+from itertools import combinations 
+  
+def subset(arr, r): 
+    # return list of all subsets of length r 
+    # to deal with duplicate subsets use  
+    # set(list(combinations(arr, r))) 
+    return list(combinations(arr, r)) 
+  
+
+arr = [1, 2, 3, 4] 
+r = 3
+subset(arr, r) 
+
+A =  [4, 2, 1]
+B =  [2, 5, 3] 
+F =  2
+
+def solution(A,B, F) :
+    n = len(A)
+    ll = list(itertools.permutations( [t for t in range(n)] ))
+    # ll = subset([t for t in range(n)], n) 
+    smax = 0
+    for v in ll :
+      s1 = 0
+      for x in v[:F] :
+          s1 = s1 + A[x]
+
+      s2 = 0
+      for x in v[F:] :
+          s2 = s2 + B[x]
+          
+      if s1 + s2 > smax :
+        smax = s1 + s2
+        vmax = v
+    
+    return smax, vmax
+
+
+
+A =  [4, 2, 1]
+B =  [2, 5, 3] 
+F =  2
+
+
+list(v)
+
+A[[2,3 ]]
+
+
+
+
 #### Binary Search base Algo :  #######################################
 Binary Search on potential Min values
   max(A) <  Min largesum < sum(A)
